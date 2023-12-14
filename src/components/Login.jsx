@@ -19,6 +19,7 @@ const Login = ({setToken}) => {
         try {
             
             const {data} = await axios.post('https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/users/login', user)
+            console.log(data)
             window.localStorage.setItem('token', data.token);
             setToken(data.token)
             navigate('/')
