@@ -1,33 +1,24 @@
-import { useState, useEffect } from "react"
-import axios from "axios"
+import { Link, Route, Routes } from "react-router-dom"
+import SingleBook from "./SingleBook"
 
-const Books = () => {
-    //state variables 
-    const [books, setBooks] = useState([])
-
-    //fetch books
-    useEffect(() => {
-        const fetchBooks = async () => {
-            const response = await axios.get('https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/books')
-            console.log(response.data.books)
-            //update state
-            setBooks(response.data.books)
-        }
-        fetchBooks()
-    },[])
+const Books = ({books}) => {
 
     return(
         <div>
-
             <h1>Books</h1>
-            {books.map((book) => {
-                return (
-                    <ul key={book.id}>
-                        <li>{book.title}</li>
-                    </ul>
-                )
-            })}
-        
+            <ul>
+                {books.map((book) => {
+                    return (
+                        <li key={book.id}>
+                            <Link to={`/books/${book.id}`}>
+                            {book.title}
+                            </Link>
+                        </li>
+                        )
+                        
+                    })}  
+            </ul>
+              
         </div>
     )
 }

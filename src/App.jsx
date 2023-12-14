@@ -9,10 +9,13 @@ import Register from './components/Register'
 import Account from './components/Account'
 import SuccessRegi from './components/SuccessRegi'
 import Homepage from './components/Homepage'
+import SingleBook from './components/SingleBook'
 
 function App() {
   const [token, setToken] = useState(null)
   const [user, setUser] = useState({})
+
+  const [books, setBooks] = useState([])
 
 
   useEffect(() => {
@@ -39,6 +42,19 @@ function App() {
     attemptLogin()
   },[token])
 
+  
+
+  //fetch books
+  useEffect(() => {
+      const fetchBooks = async () => {
+          const response = await axios.get('https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/books')
+          console.log(response.data.books)
+          //update state
+          setBooks(response.data.books)
+      }
+      fetchBooks()
+  },[])
+
  
   return (
     <>
@@ -47,7 +63,8 @@ function App() {
     <Routes>
       <Route path='/' element={<Homepage/>}/>
       <Route path='/successReg' element={<SuccessRegi />}/>
-      <Route path='/books' element={<Books />}/>
+      <Route path='/books' element={<Books books={books} />}/>
+      <Route path="/books/:id" element={<SingleBook books={books}/> }/>
       <Route path='/login' element={<Login setUser={setUser} setToken={setToken}/>}/>
       <Route path='/register' element={<Register />}/>
       <Route path='/account' element={<Account user={user} setUser={setUser} setToken={setToken}/>}/>
