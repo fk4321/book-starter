@@ -1,4 +1,4 @@
-import { useParams } from "react-router-dom"
+import { useParams, Link } from "react-router-dom"
 
 const SingleBook = ({books}) => {
     //useParams to get book ID 
@@ -22,6 +22,8 @@ const SingleBook = ({books}) => {
             <p>{findBook.author}</p>
             <p>{findBook.available}</p>
             <p>{findBook.description}</p>
+            <Link to='/books'>Back to All Books</Link>
+
         </div>       
     )
 }

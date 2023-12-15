@@ -21,7 +21,9 @@ const Account = ({user, setUser, setToken }) => {
             <button onClick={() => {logout()}}>Logout</button>
             <hr/>
             <h2>Email: {user.email}</h2>
-            <h4>This could be a good place to show checked out books...</h4>
+            <h4>Checked out Books</h4>
+            <p>Book1</p>
+            <p>Book2</p>
             
             
            
