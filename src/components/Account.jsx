@@ -1,8 +1,9 @@
 
-import { useNavigate } from "react-router-dom"
+import { useNavigate, Link } from "react-router-dom"
+import CheckoutBook from "./CheckoutBook"
 
 
-const Account = ({user, setUser, setToken }) => {
+const Account = ({books, user, setUser, setToken }) => {
     const navigate = useNavigate()
     
     const logout = () => {
@@ -24,6 +25,10 @@ const Account = ({user, setUser, setToken }) => {
             <h4>Checked out Books</h4>
             <p>Book1</p>
             <p>Book2</p>
+            {/* <CheckoutBook books={books} user={user} setUser={setUser}/> */}
+            <button>
+                <Link to='/books'>Return to All Books</Link>
+            </button>
             
             
            

@@ -48,7 +48,7 @@ function App() {
   useEffect(() => {
       const fetchBooks = async () => {
           const response = await axios.get('https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/books')
-          console.log(response.data.books)
+          // console.log(response.data.books)
           //update state
           setBooks(response.data.books)
       }
@@ -64,7 +64,7 @@ function App() {
       <Route path='/' element={<Homepage/>}/>
       <Route path='/successReg' element={<SuccessRegi />}/>
       <Route path='/books' element={<Books books={books} />}/>
-      <Route path="/books/:id" element={<SingleBook books={books}/> }/>
+      <Route path="/books/:id" element={<SingleBook books={books} user={user} setUser={setUser}/> }/>
       <Route path='/login' element={<Login setUser={setUser} setToken={setToken}/>}/>
       <Route path='/register' element={<Register />}/>
       <Route path='/account' element={<Account user={user} setUser={setUser} setToken={setToken}/>}/>
