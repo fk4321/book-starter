@@ -1,8 +1,8 @@
-# Block 30 - Book Buddy
+# Book Buddy Project
 
 ## Introduction
 
-We are working with a new client who is wanting to design an online library for the public. Another Full Stack Solutions team has already built out the API, but we need your assistance in developing the front end to ensure on-time delivery to the client. When this is complete, please submit the link to the deployed application so I can share it with the client.
+This is a Front-End Design for an online library for the public. The API is already built but I developed the front end.
 
 Details on the API can be found 🔗 [here]
 
@@ -18,20 +18,12 @@ Details on the API can be found 🔗 [here]
 - a logged in user can see their account page
 - a logged in user can log out
 - a user can register
-
-# Tasks
-- [] all users should see the list of all books
-- [] all users should see the details of a single book
-- [] a logged in user can checkout an available book
-- [] a logged in user should be able to see their checked out books
-- [] a logged in user can return a checked out book
-- [] a guest user cannot checkout or return any books
-- [] a guest user cannot see the account page of any registered user
-- [] all users should be able to search for books by title (no need for axios)
-- [] in the search for books, display results of search out of total
-- [] apply some css so that we can see which link in the nav bar is selected
-- [] display a welcome message to a logged in user when viewing homepage otherwise, normal welcome 
-- [] all users can see an about us page 
-- [] more css!
-# book-starter
-# book-starter
+- all users can see the list of all books
+- all users can see the details of a single book
+- a logged in user can checkout an available book
+- a logged in user can see their checked out books
+- a logged in user can return a checked out book
+- a guest user cannot checkout or return any books
+- a guest user cannot see the account page of any registered user
+- all users can be able to search for books by title
+- all users can see an about us page 
