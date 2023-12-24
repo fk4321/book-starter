@@ -1,5 +1,4 @@
 import { Link, Route, Routes } from "react-router-dom"
-import SingleBook from "./SingleBook"
 
 const Books = ({books}) => {
 
@@ -9,11 +8,10 @@ const Books = ({books}) => {
             <ul>
                 {books.map((book) => {
                     return (
-                        <li key={book.id}>
-                            <Link to={`/books/${book.id}`}>
-                            {book.title}
-                            </Link>
-                        </li>
+                        <Link key={book.id} to={`/books/${book.id}`}>
+                            <li>{book.title}</li>
+                            <div>Available: {book.available ? "Yes" : "No"}</div>
+                        </Link>
                         )
                         
                     })}  

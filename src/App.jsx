@@ -14,9 +14,19 @@ import SingleBook from './components/SingleBook'
 function App() {
   const [token, setToken] = useState(null)
   const [user, setUser] = useState({})
-
   const [books, setBooks] = useState([])
+  const [reserved, setReserved] = useState([])
 
+   //fetch books
+  useEffect(() => {
+    const fetchBooks = async () => {
+      const response = await axios.get('https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/books')
+      // console.log(response.data.books)
+      //update state
+      setBooks(response.data.books)
+    }
+    fetchBooks()
+  },[reserved.length])
 
   useEffect(() => {
     const attemptLogin = async() => {
@@ -30,7 +40,6 @@ function App() {
             'Authorization': `Bearer ${loggedInToken}`
           }
         })
-
         setUser(response.data)
       }else{
         
@@ -40,22 +49,8 @@ function App() {
     }
     
     attemptLogin()
-  },[token])
+  },[reserved.length,token])
 
-  
-
-  //fetch books
-  useEffect(() => {
-      const fetchBooks = async () => {
-          const response = await axios.get('https://fsa-book-buddy-b6e748d1380d.herokuapp.com/api/books')
-          // console.log(response.data.books)
-          //update state
-          setBooks(response.data.books)
-      }
-      fetchBooks()
-  },[])
-
- 
   return (
     <>
     <h1><img id='logo-image' src={bookLogo}/><Link to='/'>Library App</Link></h1>
@@ -64,12 +59,11 @@ function App() {
       <Route path='/' element={<Homepage/>}/>
       <Route path='/successReg' element={<SuccessRegi />}/>
       <Route path='/books' element={<Books books={books} />}/>
-      <Route path="/books/:id" element={<SingleBook books={books} user={user} setUser={setUser}/> }/>
+      <Route path="/books/:id" element={<SingleBook books={books} user={user} reserved={reserved} setReserved={setReserved} /> }/>
       <Route path='/login' element={<Login setUser={setUser} setToken={setToken}/>}/>
       <Route path='/register' element={<Register />}/>
-      <Route path='/account' element={<Account user={user} setUser={setUser} setToken={setToken}/>}/>
+      <Route path='/account' element={<Account user={user} setUser={setUser} setToken={setToken} reserved={reserved} setReserved={setReserved} />}/>
     </Routes>
-
       
     </>
   )

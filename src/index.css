@@ -31,3 +31,8 @@ nav a{
   display: flex;
   flex-wrap: wrap;
 }
+
+image {
+  height: 30px;
+  width: 30px;
+}
